@@ -10,6 +10,9 @@
 
 ## v.1.1 数据库连接
 
+对应文件修改`src/main/resources/application.yml`
+需要本地化修改
+
 ## v.1.2 代码生成器
 
 在wms.common中新建了CodeGenerator用于生成与数据库相关的代码。
@@ -18,3 +21,7 @@
 
 生成后，需要在对应的Mapper文件中添加`@Mapper`注解。
 新添加的方法应写在对应的Controller中。
+
+## v.1.3 实现增删改查
+
+在Controller中写函数实现了增删改查，使用Postman进行http的发送可以实现数据库中数据的增删改查。
