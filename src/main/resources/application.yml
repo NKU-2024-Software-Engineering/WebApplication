@@ -1,0 +1,11 @@
+server:
+  # 该port指定程序在哪个端口上运行，对应需要访问localhost:port来访问程序
+  port: 8090
+spring:
+  datasource:
+    # localhost:port 这个port和本机的mysql端口一致
+    url: jdbc:mysql://localhost:3306/wms?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # 对应的用户名和密码与自己的mysql对应
+    username: root
+    password: root
