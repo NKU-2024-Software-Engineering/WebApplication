@@ -29,3 +29,7 @@
 ## v.2.0 增加前端页面
 
 使用了`element plus`的`container`组件实现了基本的页面显示。
+
+## v.2.1 实现页面布局的拆分
+
+将`Index.vue`中的侧栏、顶栏、内容拆分为`Aside.vue`、`Header.vue`和`Main.vue`三个控件。方便后续进行专门的修改。
