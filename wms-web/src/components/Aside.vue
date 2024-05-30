@@ -11,7 +11,9 @@
             <el-icon>
                 <i-ep-HomeFilled />
             </el-icon>
-            <span>首页</span>
+            <template #title>
+                <span>首页</span>
+            </template>
         </el-menu-item>
         <el-menu-item index="/Home1">
             <el-icon>

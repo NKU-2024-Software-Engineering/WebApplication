@@ -59,13 +59,15 @@ public class UserController {
 
     // 查询（模糊或匹配）
     @PostMapping("/listP")
-    public List<User> listP(@RequestBody User user) {
+    public Result listP(@RequestBody User user) {
         LambdaQueryWrapper<User> lambdaQueryWrapper = new LambdaQueryWrapper<>();
         // like 模糊查询
         lambdaQueryWrapper.like(User::getName, user.getName());
         // eq 完全匹配
         // lambdaQueryWrapper.eq(User::getName, user.getName());
-        return userService.list(lambdaQueryWrapper);
+
+
+        return Result.suc(userService.list(lambdaQueryWrapper));
     }
 
     @PostMapping("/listPage")

@@ -4,7 +4,7 @@ import './assets/global.css'
 import axios from 'axios';
 import VueAxios from 'vue-axios'
 
-axios.defaults.baseURL = 'http://localhost:8090/user';
+axios.defaults.baseURL = 'http://localhost:8090';
 
 
 const app = createApp(App)
