@@ -56,7 +56,7 @@ public class CodeGenerator {
                 .naming(NamingStrategy.underline_to_camel)// 数据表映射实体命名策略：默认下划线转驼峰underline_to_camel
                 .columnNaming(NamingStrategy.underline_to_camel)// 表字段映射实体属性命名规则：默认null，不指定按照naming执行
                 .idType(IdType.AUTO)// 添加全局主键类型
-                // .enableFileOverride()// 允许文件覆盖
+//                 .enableFileOverride()// 允许文件覆盖
                 // mapper配置
                 .mapperBuilder()//
                 .superClass(BaseMapper.class) // 继承BaseMapper
@@ -65,12 +65,12 @@ public class CodeGenerator {
                 .enableBaseColumnList()// 启用xml文件中的BaseColumnList
                 .formatMapperFileName("%sMapper")// 格式化Dao类名称
                 .formatXmlFileName("%sMapper")// 格式化xml文件名称
-                // .enableFileOverride()// 允许文件覆盖
+//                 .enableFileOverride()// 允许文件覆盖
                 // service 配置
                 .serviceBuilder()//
                 .formatServiceFileName("%sService")// 格式化 service 接口文件名称
                 .formatServiceImplFileName("%sServiceImpl")// 格式化 service 接口文件名称
-                // .enableFileOverride()// 允许文件覆盖
+//                 .enableFileOverride()// 允许文件覆盖
                 // controller配置
                 .controllerBuilder()//
                 // .enableFileOverride()// 允许文件覆盖

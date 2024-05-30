@@ -4,17 +4,17 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.fourteen.wms.entity.User">
-        <id column="id" property="id"/>
-        <result column="account" property="account"/>
-        <result column="name" property="name"/>
-        <result column="password" property="password"/>
-        <result column="level" property="level"/>
-        <result column="is_valid" property="isValid"/>
+        <id column="id" property="id" />
+        <result column="account" property="account" />
+        <result column="name" property="name" />
+        <result column="password" property="password" />
+        <result column="level" property="level" />
+        <result column="is_valid" property="isValid" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, account, name, password,  level, is_valid
+        id, account, name, password, level, is_valid
     </sql>
 
 </mapper>
