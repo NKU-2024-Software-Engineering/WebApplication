@@ -1,7 +1,7 @@
 <script setup></script>
 <template>
     <el-container class="layout-container-demo" style="height: 100%">
-        <el-aside :width="aside_width" style="height: 100%">
+        <el-aside :width="aside_width">
             <Aside :isCollapse="to_aside"></Aside>
         </el-aside>
 
@@ -39,6 +39,10 @@ function from_header() {
 
 .layout-container-demo .el-aside {
     color: var(--el-text-color-primary);
-    background: var(--el-color-primary-light-8);
+    /* background: var(--el-color-primary-light-8); */
+    background-color: "#545c64";
+    height: auto;
+    display: flex;
+    flex-direction: column;
 }
 </style>

@@ -30,8 +30,8 @@ var loginForm = ref({
     password: "",
 });
 const rules = {
-    account: { required: true, message: "请输入账号", trigger: "input" },
-    password: { required: true, message: "请输入密码", trigger: "input" },
+    account: { required: true, message: "请输入账号", trigger: "blur" },
+    password: { required: true, message: "请输入密码", trigger: "blur" },
 };
 const { proxy } = getCurrentInstance();
 const confirm = async () => {

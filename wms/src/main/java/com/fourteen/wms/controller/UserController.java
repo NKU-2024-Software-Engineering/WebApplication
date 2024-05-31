@@ -36,26 +36,28 @@ public class UserController {
 
     // 新增
     @PostMapping("/save")
-    public boolean save(@RequestBody User user) {
-        return userService.save(user);
+    public Result save(@RequestBody User user) {
+
+        return userService.save(user)?Result.suc():Result.fail();
     }
 
     // 修改
     @PostMapping("/mod")
-    public boolean mod(@RequestBody User user) {
-        return userService.updateById(user);
+    public Result mod(@RequestBody User user) {
+
+        return userService.updateById(user)?Result.suc():Result.fail();
     }
 
     // 新增或修改
     @PostMapping("/saveOrMod")
-    public boolean saveOrMod(@RequestBody User user) {
-        return userService.saveOrUpdate(user);
+    public Result saveOrMod(@RequestBody User user) {
+        return userService.saveOrUpdate(user)?Result.suc():Result.fail();
     }
 
     // 删除
-    @GetMapping("/delete")
-    public boolean saveOrMod(Integer id) {
-        return userService.removeById(id);
+    @PostMapping("/delete")
+    public Result del(@RequestBody User user) {
+        return userService.removeById(user.getId())?Result.suc():Result.fail();
     }
 
     // 查询（模糊或匹配）

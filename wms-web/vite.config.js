@@ -40,7 +40,16 @@ export default defineConfig({
     },
     server:{
       port:8091,
-    }
+    },
+    // build:{
+    //   rollupOptions:{
+    //     //配置多页面
+    //     input:{
+    //       login: './login.html',
+    //       backend: './backend.html',
+    //     }
+    //   }
+    // }
 })
 
 

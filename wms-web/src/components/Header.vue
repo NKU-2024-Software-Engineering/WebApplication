@@ -9,7 +9,7 @@
             <span>后台管理系统</span>
         </div>
         <div class="toolbar">
-            <span>王大锤</span>
+            <span>{{ data.name }}</span>
             <el-dropdown style="margin-left: 5px">
                 <el-icon>
                     <i-ep-ArrowDown />
@@ -23,24 +23,53 @@
             </el-dropdown>
         </div>
     </div>
+    <div style="text-align: left">
+        <el-dialog v-model="dialogVisible" title="提示" width="200">
+            <span> 您确定要退出登录吗？ </span>
+            <template #footer>
+                <div class="dialog-footer">
+                    <el-button @click="dialogVisible = false">取消</el-button>
+                    <el-button type="primary" @click="confirm"> 确定 </el-button>
+                </div>
+            </template>
+        </el-dialog>
+    </div>
 </template>
 
 <script setup lang="ts">
 import { Expand, Fold } from "@element-plus/icons-vue";
+const data = ref(JSON.parse(sessionStorage.getItem("CurUser")));
+const dialogVisible = ref(false);
 const props = defineProps({
     set_icon: {},
 });
 const icon = [Fold, Expand];
 const emit = defineEmits(["to_index"]);
-function toParent() {
+const { proxy } = getCurrentInstance();
+const toParent = () => {
     emit("to_index");
-}
-function to_user() {
+};
+const to_user = () => {
     console.log("to_user");
-}
-function log_out() {
+};
+const log_out = () => {
     console.log("log_out");
-}
+    dialogVisible.value = true;
+
+    // const confirmLogout = confirm("确定要退出登录吗？");
+
+    // // 如果用户点击了确认按钮，则执行退出登录操作
+    // if (confirmLogout) {
+    //     // 执行退出登录操作，比如清除用户登录状态等
+    //     proxy.$router.push("/");
+    //     sessionStorage.clear();
+    // }
+};
+const confirm = () => {
+    dialogVisible.value = false;
+    proxy.$router.push("/");
+    sessionStorage.clear();
+};
 </script>
 
 <style>
