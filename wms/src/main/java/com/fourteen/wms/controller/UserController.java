@@ -3,6 +3,7 @@ package com.fourteen.wms.controller;
 import java.util.HashMap;
 import java.util.List;
 
+import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -92,16 +93,24 @@ public class UserController {
     @PostMapping("/listPageC")
     public Result listPageC(@RequestBody QueryPageParam qParam) {
         HashMap map = qParam.getParam();
+        String name = (String)map.get("name");
+        Integer iLevel = (Integer)map.get("level");
 
         Page<User> page = new Page<>();
         page.setCurrent(qParam.getPageNum());
         page.setSize(qParam.getPageSize());
 
-        String name = (String)map.get("name");
-
         LambdaQueryWrapper<User> lambdaQueryWrapper = new LambdaQueryWrapper<>();
-        // like 模糊查询
-        lambdaQueryWrapper.like(User::getName, name);
+        if(StringUtils.isNotBlank(name) && !"null".equals(name))
+        {
+            // like 模糊查询
+            lambdaQueryWrapper.like(User::getName, name);
+        }
+        if(iLevel!=null)
+        {
+            int level = iLevel;
+            lambdaQueryWrapper.eq(User::getLevel, level);
+        }
         IPage<User> result = userService.page(page, lambdaQueryWrapper);
 
         return Result.suc(result.getTotal(), result.getRecords());

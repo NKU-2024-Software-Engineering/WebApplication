@@ -7,26 +7,32 @@
         default-active="/Home"
         :collapse="props.isCollapse"
         :collapse-transition="false">
-        <el-menu-item index="/Home">
-            <el-icon>
-                <i-ep-HomeFilled />
-            </el-icon>
-            <template #title>
+        <el-tooltip effect="dark" content="首页" placement="top">
+            <el-menu-item index="/Home">
+                <el-icon>
+                    <i-ep-HomeFilled />
+                </el-icon>
                 <span>首页</span>
-            </template>
-        </el-menu-item>
-        <el-menu-item index="/Home1">
-            <el-icon>
-                <i-ep-UserFilled />
-            </el-icon>
-            <span>求职者</span>
-        </el-menu-item>
-        <el-menu-item index="/Home2">
-            <el-icon>
-                <i-ep-Avatar />
-            </el-icon>
-            <span>公司HR</span>
-        </el-menu-item>
+            </el-menu-item>
+        </el-tooltip>
+
+        <el-tooltip effect="dark" content="求职者" placement="top">
+            <el-menu-item index="/Home1">
+                <el-icon>
+                    <i-ep-UserFilled />
+                </el-icon>
+                <span>求职者</span>
+            </el-menu-item>
+        </el-tooltip>
+
+        <el-tooltip effect="dark" content="公司HR" placement="top">
+            <el-menu-item index="/Home2">
+                <el-icon>
+                    <i-ep-Avatar />
+                </el-icon>
+                <span>公司HR</span>
+            </el-menu-item>
+        </el-tooltip>
     </el-menu>
 </template>
 <script lang="ts" setup>
