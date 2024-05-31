@@ -115,4 +115,14 @@ public class UserController {
 
         return Result.suc(result.getTotal(), result.getRecords());
     }
+
+    @PostMapping("/login")
+    public Result login(@RequestBody User user){
+        System.out.println(user.getAccount());
+        System.out.println(user.getPassword());
+        List list = userService.lambdaQuery().eq(User::getAccount,user.getAccount())
+                .eq(User::getPassword,user.getPassword())
+                .list();
+        return list.size()>0 ? Result.suc(list.get(0)) :Result.fail();
+    }
 }

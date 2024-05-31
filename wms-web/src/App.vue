@@ -1,14 +1,9 @@
-<script setup>
-
-</script>
-
+<script setup></script>
 
 <template>
-    <Index></Index>
+    <router-view></router-view>
 </template>
 
-<script lang="ts" setup>
-import Index from './components/Index.vue'
-</script>
+<script lang="ts" setup></script>
 
 <style scoped></style>

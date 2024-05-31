@@ -1,7 +1,7 @@
 <template lang="">
     <div style="margin-bottom: 5px; margin-top: 5px; margin-left: 5px">
         <el-input
-            placeholder="请输入信息"
+            placeholder="请输入姓名"
             style="width: 200px"
             :suffix-icon="Search"
             v-model="input_name"
@@ -11,6 +11,7 @@
         </el-select>
         <el-button type="primary" style="margin-left: 10px" @click="load">查询</el-button>
         <el-button type="success" @click="reset">重置</el-button>
+        <el-button type="primary" @click="add">新增</el-button>
     </div>
 
     <el-table :data="tableData" :header-cell-style="{ background: '#6565BD' }" border>
@@ -43,6 +44,44 @@
             @size-change="handleSizeChange"
             @current-change="handleCurrentChange" />
     </div>
+
+    <el-dialog v-model="dialogVisible" title="添加一个新用户" width="500">
+        <el-form :model="form" label-width="auto" style="max-width: 600px">
+            <el-form-item label="名字">
+                <el-col :span="11">
+                    <el-input v-model="form.name" />
+                </el-col>
+            </el-form-item>
+            <el-form-item label="账号">
+                <el-col :span="11">
+                    <el-input v-model="form.account" />
+                </el-col>
+            </el-form-item>
+            <el-form-item label="密码">
+                <el-col :span="11">
+                    <el-input v-model="form.password" />
+                </el-col>
+            </el-form-item>
+            <el-form-item label="重复密码">
+                <el-col :span="11">
+                    <el-input v-model="form.repassword" />
+                </el-col>
+            </el-form-item>
+            <el-form-item label="权限等级">
+                <el-radio-group v-model="form.level">
+                    <el-radio value="0">超级管理员</el-radio>
+                    <el-radio value="1">管理员</el-radio>
+                    <el-radio value="2">普通用户</el-radio>
+                </el-radio-group>
+            </el-form-item>
+        </el-form>
+        <template #footer>
+            <div class="dialog-footer">
+                <el-button @click="dialogVisible = false">Cancel</el-button>
+                <el-button type="primary" @click="dialogVisible = false"> Confirm </el-button>
+            </div>
+        </template>
+    </el-dialog>
 </template>
 
 <script lang="ts" setup>
@@ -54,6 +93,14 @@ const pageNum = ref(1);
 const pageSize = ref(10);
 const input_name = ref("");
 const input_level = ref();
+const dialogVisible = ref(false);
+const form = reactive({
+    name: "",
+    account: "",
+    password: "",
+    repassword: "",
+    level: "",
+});
 const options = [
     {
         value: 0,
@@ -108,6 +155,9 @@ load();
 const reset = () => {
     input_name.value = "";
     input_level.value = null;
+};
+const add = () => {
+    dialogVisible.value = true;
 };
 
 // axios({
