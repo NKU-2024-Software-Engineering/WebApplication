@@ -44,7 +44,7 @@ public class CodeGenerator {
                     .service("service")// service层包名
                     .serviceImpl("service.impl")// service实现类包名
                     .pathInfo(Collections.singletonMap(OutputFile.xml,
-                        System.getProperty("user.dir") + "/src/main/resources/mapper"));
+                        System.getProperty("user.dir") + "/wms/src/main/resources/mapper"));
             } // 设置mapperXml生成路径
         ).strategyConfig(builder -> {
             builder.addInclude(tableName) // 设置需要生成的表名
