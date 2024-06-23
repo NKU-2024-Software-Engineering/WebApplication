@@ -245,7 +245,6 @@ const delete_one = async (row) => {
 </script>
 <script lang="ts">
 import axios from "axios";
-import { messageConfig } from "element-plus";
 </script>
 <style scope>
 .layout-container-demo .el-main {

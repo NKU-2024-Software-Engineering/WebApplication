@@ -2,14 +2,9 @@ import { createRouter,createWebHistory } from "vue-router";
 
 const routes = [
   {
-    path: '/',
-    name:'Login',
-    component: () => import('../components/Login.vue')  // 登录组件
-  },
-  {
-    path: '/backend',
-    name: 'backend',
-    component: () => import('../components/Index.vue')  // 后台
+    path: '/frontend',
+    name:'frontend',
+    component: () => import('../App.vue'),  // 登录
   }
 ]
 

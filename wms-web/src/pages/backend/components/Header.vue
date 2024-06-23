@@ -67,8 +67,9 @@ const log_out = () => {
 };
 const confirm = () => {
     dialogVisible.value = false;
-    proxy.$router.push("/");
+    console.log(proxy.$router);
     sessionStorage.clear();
+    proxy.$router.replace("/login");
 };
 </script>
 

@@ -53,7 +53,7 @@ const confirm = async () => {
             if (data.code == 200) {
                 sessionStorage.setItem("CurUser", JSON.stringify(data.data));
                 const router = proxy.$router;
-                router.replace("/backend");
+                router.replace("/backend/manage");
             } else {
                 confirm_disabled = false;
                 alert("校验失败，用户名或密码错误");
