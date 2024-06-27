@@ -4,11 +4,12 @@
         active-text-color="#ffd04b"
         background-color="#545c64"
         text-color="#fff"
-        default-active="/Home"
+        default-active="/backend/manage"
         :collapse="props.isCollapse"
-        :collapse-transition="false">
+        :collapse-transition="false"
+        router>
         <el-tooltip effect="dark" content="首页" placement="top">
-            <el-menu-item index="/Home">
+            <el-menu-item index="/backend/manage">
                 <el-icon>
                     <i-ep-HomeFilled />
                 </el-icon>
@@ -17,7 +18,7 @@
         </el-tooltip>
 
         <el-tooltip effect="dark" content="求职者" placement="top">
-            <el-menu-item index="/Home1">
+            <el-menu-item index="/backend/jmanage">
                 <el-icon>
                     <i-ep-UserFilled />
                 </el-icon>
@@ -26,7 +27,7 @@
         </el-tooltip>
 
         <el-tooltip effect="dark" content="公司HR" placement="top">
-            <el-menu-item index="/Home2">
+            <el-menu-item index="/backend/hmanage">
                 <el-icon>
                     <i-ep-Avatar />
                 </el-icon>

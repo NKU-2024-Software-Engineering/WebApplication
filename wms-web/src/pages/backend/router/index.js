@@ -10,6 +10,16 @@ const routes = [
     path: '/backend/manage',
     name:'manage',
     component: () => import('../components/Index.vue'),  // 后台
+  },
+  {
+    path: '/backend/jmanage',
+    name:'jmanage',
+    component: () => import('../components/Index.vue'),  // 后台
+  },
+  {
+    path: '/backend/hmanage',
+    name:'hmanage',
+    component: () => import('../components/Index.vue'),  // 后台
   }
 ]
 
