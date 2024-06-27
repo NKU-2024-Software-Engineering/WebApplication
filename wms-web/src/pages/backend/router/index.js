@@ -10,16 +10,23 @@ const routes = [
     path: '/backend/manage',
     name:'manage',
     component: () => import('../components/Index.vue'),  // 后台
-  },
-  {
-    path: '/backend/jmanage',
-    name:'jmanage',
-    component: () => import('../components/Index.vue'),  // 后台
-  },
-  {
-    path: '/backend/hmanage',
-    name:'hmanage',
-    component: () => import('../components/Index.vue'),  // 后台
+    children:[
+      {
+        path:'',
+        name:'umanage',
+        component: () => import('../components/Main.vue'),  // 管理用户
+      },
+      {
+        path: 'j',
+        name:'jmanage',
+        component: () => import('../components/Jmanage.vue'),  // 管理求职者
+      },
+      {
+        path: 'h',
+        name:'hmanage',
+        component: () => import('../components/Hmanage.vue'),  // 管理HR
+      }
+    ]
   }
 ]
 

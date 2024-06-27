@@ -6,12 +6,11 @@ import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.fourteen.wms.common.QueryPageParam;
 import com.fourteen.wms.common.Result;
-import com.fourteen.wms.entity.Cvs;
-import com.fourteen.wms.entity.Cvs;
+import com.fourteen.wms.entity.Hrs;
+import com.fourteen.wms.entity.Hrs;
 import com.fourteen.wms.entity.User;
-import com.fourteen.wms.service.CvsService;
-
-import org.apache.logging.log4j.message.ReusableMessage;
+import com.fourteen.wms.service.HrsService;
+import com.fourteen.wms.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -26,31 +25,30 @@ import java.util.HashMap;
  * </p>
  *
  * @author akaziki
- * @since 2024-06-26
+ * @since 2024-06-27
  */
 @RestController
-@RequestMapping("/cvs")
-public class CvsController {
+@RequestMapping("/hrs")
+public class HrsController {
     @Autowired
-    private CvsService cvsService;
+    private HrsService hrsService;
 
     @PostMapping("/listPageC")
     public Result listPageC(@RequestBody QueryPageParam qParam) {
-
         HashMap map = qParam.getParam();
         String name = (String)map.get("name");
 
-        Page<Cvs> page = new Page<>();
+        Page<Hrs> page = new Page<>();
         page.setCurrent(qParam.getPageNum());
         page.setSize(qParam.getPageSize());
 
-        LambdaQueryWrapper<Cvs> lambdaQueryWrapper = new LambdaQueryWrapper<>();
+        LambdaQueryWrapper<Hrs> lambdaQueryWrapper = new LambdaQueryWrapper<>();
         if(StringUtils.isNotBlank(name) && !"null".equals(name))
         {
             // like 模糊查询
-            lambdaQueryWrapper.like(Cvs::get用户id, name);
+            lambdaQueryWrapper.like(Hrs::get姓名, name);
         }
-        IPage<Cvs> result = cvsService.page(page, lambdaQueryWrapper);
+        IPage<Hrs> result = hrsService.page(page, lambdaQueryWrapper);
 
         return Result.suc(result.getTotal(), result.getRecords());
     }
@@ -59,17 +57,17 @@ public class CvsController {
     public Result search(@RequestBody HashMap hashMap) {
         int id = (Integer) hashMap.get("id");
         System.out.println(id);
-        Cvs cvs = cvsService.getById(id);
-        return cvs!=null?Result.suc(cvs):Result.fail();
+        Hrs hrs = hrsService.getById(id);
+        return hrs!=null?Result.suc(hrs):Result.fail();
     }
 
     @PostMapping("/saveOrMod")
-    public Result saveOrMod(@RequestBody Cvs cvs) {
-        return cvsService.saveOrUpdate(cvs)?Result.suc():Result.fail();
+    public Result saveOrMod(@RequestBody Hrs hrs) {
+        return hrsService.saveOrUpdate(hrs)?Result.suc():Result.fail();
     }
 
     @PostMapping("/delete")
-    public Result del(@RequestBody Cvs cvs) {
-        return cvsService.removeById(cvs.get简历id())?Result.suc():Result.fail();
+    public Result del(@RequestBody Hrs hrs) {
+        return hrsService.removeById(hrs.getHRid())?Result.suc():Result.fail();
     }
 }

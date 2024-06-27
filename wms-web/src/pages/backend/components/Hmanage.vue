@@ -12,11 +12,11 @@
 
     <el-table :data="tableData" :header-cell-style="{ background: '#6565BD' }" border>
         <el-table-column prop="用户id" label="用户ID" width="90" />
-        <el-table-column prop="用户名" label="用户名" width="90" />
+        <el-table-column prop="hrid" label="HRid" width="90" />
+        <el-table-column prop="公司" label="公司名" width="90" />
         <el-table-column prop="姓名" label="姓名" width="90" />
         <el-table-column prop="operate" label="操作" width="auto">
             <template #default="scope">
-                <el-button type="primary" @click="check(scope.row)">查看</el-button>
                 <el-button type="success" @click="modify(scope.row)">编辑</el-button>
 
                 <el-popconfirm title="您确定要删除该数据吗?" @confirm="delete_one(scope.row)">
@@ -45,39 +45,9 @@
                     <el-input v-model="form.name" :disabled="edit" />
                 </el-col>
             </el-form-item>
-            <el-form-item label="手机号" prop="tele">
+            <el-form-item label="公司名" prop="companyn">
                 <el-col :span="11">
-                    <el-input v-model="form.tele" :disabled="edit" />
-                </el-col>
-            </el-form-item>
-            <el-form-item label="紧急联系人" prop="ec">
-                <el-col :span="11">
-                    <el-input v-model="form.ec" :disabled="edit" />
-                </el-col>
-            </el-form-item>
-            <el-form-item label="紧急联系人电话" prop="ect">
-                <el-col :span="11">
-                    <el-input v-model="form.ect" :disabled="edit" />
-                </el-col>
-            </el-form-item>
-            <el-form-item label="意向岗位" prop="dposition">
-                <el-col :span="11">
-                    <el-input v-model="form.dposition" :disabled="edit" />
-                </el-col>
-            </el-form-item>
-            <el-form-item label="技能特长" prop="ss">
-                <el-col :span="18">
-                    <el-input type="textarea" v-model="form.ss" :disabled="edit" />
-                </el-col>
-            </el-form-item>
-            <el-form-item label="经历" prop="exp">
-                <el-col :span="18">
-                    <el-input type="textarea" v-model="form.exp" :disabled="edit" />
-                </el-col>
-            </el-form-item>
-            <el-form-item label="自我评价" prop="se">
-                <el-col :span="18">
-                    <el-input type="textarea" v-model="form.se" :disabled="edit" />
+                    <el-input v-model="form.companyn" :disabled="edit" />
                 </el-col>
             </el-form-item>
         </el-form>
@@ -105,15 +75,8 @@ const dialogVisible = ref(false);
 const form = reactive({
     id: null,
     name: "", // 姓名
-    tele: "",
-    ec: "", //紧急联系人
-    ect: "", //紧急联系人电话
-    dposition: "", //意向岗位
-    se: "", //自我评价
-    ss: "", //技能特长
-    exp: "", //经历
-    uname: "", //用户名
-    cid: "", //简历id
+    companyn: "", //公司名
+    hid: "", //hrid
 });
 const handleSizeChange = (val: number) => {
     console.log(`${val} items per page`);
@@ -129,7 +92,7 @@ const load = async () => {
     try {
         let { data } = await axios({
             method: "post",
-            url: "/cvs/listPageC", //这里由于之前设置了baseURL,所以直接跳过顶级域名
+            url: "/hrs/listPageC", //这里由于之前设置了baseURL,所以直接跳过顶级域名
             params: {},
             data: {
                 pageSize: pageSize.value,
@@ -157,25 +120,18 @@ const get = async (row) => {
     try {
         let { data } = await axios({
             method: "post",
-            url: "/cvs/search",
+            url: "/hrs/search",
             params: {},
             data: {
-                id: row.简历id,
+                id: row.hrid,
             },
         });
         if (data.code == 200) {
             console.log("查看成功");
             form.id = data.data.用户id;
             form.name = data.data.姓名;
-            form.dposition = data.data.意向岗位;
-            form.ec = data.data.紧急联系人;
-            form.ect = data.data.紧急联系人电话;
-            form.exp = data.data.经历;
-            form.tele = data.data.手机号;
-            form.se = data.data.自我评价;
-            form.ss = data.data.技能特长;
-            form.uname = data.data.用户名;
-            form.cid = data.data.简历id;
+            form.hid = data.data.hrid;
+            form.companyn = data.data.公司;
         } else {
             alert("查看失败");
         }
@@ -197,10 +153,10 @@ const delete_one = async (row) => {
     try {
         let { data } = await axios({
             method: "post",
-            url: "/cvs/delete",
+            url: "/hrs/delete",
             params: {},
             data: {
-                简历id: form.cid,
+                hrid: form.hid,
             },
         });
         if (data.code == 200) {
@@ -217,20 +173,13 @@ const save = async () => {
     try {
         let { data } = await axios({
             method: "post",
-            url: "/cvs/saveOrMod",
+            url: "/hrs/saveOrMod",
             params: {},
             data: {
                 姓名: form.name,
-                手机号: form.tele,
-                紧急联系人: form.ec,
-                紧急联系人电话: form.ect,
-                意向岗位: form.dposition,
-                自我评价: form.se,
-                技能特长: form.ss,
-                经历: form.exp,
                 用户id: form.id,
-                用户名: form.uname,
-                简历id: form.cid,
+                公司名: form.companyn,
+                hrid: form.hid,
             },
         });
         if (data.code == 200) {

@@ -20,31 +20,19 @@ import lombok.experimental.Accessors;
 @Getter
 @Setter
 @Accessors(chain = true)
-@ApiModel(value = "Cvs对象", description = "")
-public class Cvs implements Serializable {
+@ApiModel(value = "Hrs对象", description = "")
+public class Hrs implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private String 姓名;
-
-    private String 手机号;
-
-    private String 紧急联系人;
-
-    private String 紧急联系人电话;
-
-    private String 意向岗位;
-
-    private String 自我评价;
-
-    private String 技能特长;
-
-    private String 经历;
-
-    @TableId(value = "简历id", type = IdType.AUTO)
-    private Integer 简历id;
-
     private Integer 用户id;
 
-    private String 用户名;
+    @TableId(value = "HRid", type = IdType.AUTO)
+    private Integer hRid;
+
+    private String 公司;
+
+    private String 姓名;
+
+    private String 联系方式;
 }

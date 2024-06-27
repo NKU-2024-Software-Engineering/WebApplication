@@ -8,17 +8,17 @@
         :collapse="props.isCollapse"
         :collapse-transition="false"
         router>
-        <el-tooltip effect="dark" content="首页" placement="top">
+        <el-tooltip effect="dark" content="用户管理" placement="top">
             <el-menu-item index="/backend/manage">
                 <el-icon>
                     <i-ep-HomeFilled />
                 </el-icon>
-                <span>首页</span>
+                <span>用户管理</span>
             </el-menu-item>
         </el-tooltip>
 
         <el-tooltip effect="dark" content="求职者" placement="top">
-            <el-menu-item index="/backend/jmanage">
+            <el-menu-item index="/backend/manage/j">
                 <el-icon>
                     <i-ep-UserFilled />
                 </el-icon>
@@ -27,7 +27,7 @@
         </el-tooltip>
 
         <el-tooltip effect="dark" content="公司HR" placement="top">
-            <el-menu-item index="/backend/hmanage">
+            <el-menu-item index="/backend/manage/h">
                 <el-icon>
                     <i-ep-Avatar />
                 </el-icon>
