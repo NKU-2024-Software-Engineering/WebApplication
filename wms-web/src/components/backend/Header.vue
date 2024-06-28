@@ -69,7 +69,7 @@ const confirm = () => {
     dialogVisible.value = false;
     console.log(proxy.$router);
     sessionStorage.clear();
-    proxy.$router.replace("/login");
+    proxy.$router.replace("/backend");
 };
 </script>
 

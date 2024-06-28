@@ -4,29 +4,34 @@ const routes = [
   {
     path: '/backend',
     name:'backend',
-    component: () => import('../components/Login.vue'),  // 登录
+    component: () => import('../views/backend/Login.vue'),  // 登录
   },
   {
     path: '/backend/manage',
     name:'manage',
-    component: () => import('../components/Index.vue'),  // 后台
+    component: () => import('../views/backend/Index.vue'),  // 后台
     children:[
       {
         path:'',
         name:'umanage',
-        component: () => import('../components/Main.vue'),  // 管理用户
+        component: () => import('../components/backend/Main.vue'),  // 管理用户
       },
       {
         path: 'j',
         name:'jmanage',
-        component: () => import('../components/Jmanage.vue'),  // 管理求职者
+        component: () => import('../components/backend/Jmanage.vue'),  // 管理求职者
       },
       {
         path: 'h',
         name:'hmanage',
-        component: () => import('../components/Hmanage.vue'),  // 管理HR
+        component: () => import('../components/backend/Hmanage.vue'),  // 管理HR
       }
     ]
+  },
+  {
+    path: '/',
+    name: 'main',
+    component: () => import('../components/common/404.vue'),  // 登录
   }
 ]
 

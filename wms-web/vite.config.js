@@ -71,7 +71,7 @@ export default defineConfig({
         input: {
           index: path.resolve(__dirname,'index.html'),
           frontend: path.resolve(__dirname,'frontend.html'),
-          backend: path.resolve(__dirname,'backend.html')
+          //backend: path.resolve(__dirname,'backend.html')
         }
       }
     }

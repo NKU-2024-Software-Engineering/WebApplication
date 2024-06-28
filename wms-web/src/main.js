@@ -1,22 +1,26 @@
 import {createApp} from 'vue'
 import App from './App.vue'
 import './assets/global.css'
-// import axios from 'axios';
-// import VueAxios from 'vue-axios'
-// import router from './router'
-// axios.defaults.baseURL = 'http://localhost:8090';
+import axios from 'axios';
+import VueAxios from 'vue-axios'
+import router from './router'
 
-// import Aside from './pages/backend/components/Aside.vue';
-// import Header from './pages/backend/components/Header.vue';
-// import Main from './pages/backend/components/Main.vue';
+import components from './components/components';
+import backcomponents from './components/backcomponents';
+import frontcomponents from './components/frontcomponents';
+
+axios.defaults.baseURL = 'http://localhost:8090';
+
+
 
 
 const app = createApp(App)
 
-// app.component('Aside',Aside);
-// app.component('Header',Header);
-// app.component('Main',Main);
 
-// app.use(VueAxios,axios);
-// app.use(router);
+
+app.use(VueAxios,axios);
+app.use(router);
+app.use(components);
+app.use(backcomponents);
+app.use(frontcomponents);
 app.mount('#app')
