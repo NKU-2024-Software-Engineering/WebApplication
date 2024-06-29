@@ -1,8 +1,11 @@
 <template>
     <div class="loginBody">
+        <div class="Dimg">
+            <img src="../../../public/loginImg.jpeg" alt="示例" class="img" />
+        </div>
         <div class="loginDiv">
             <div class="login-content">
-                <h1 class="login-title">用户登录</h1>
+                <h1 class="login-title">速投平台</h1>
                 <el-form :model="loginForm" label-width="100px" :rules="rules" ref="form">
                     <el-form-item label="用户名" prop="account">
                         <el-input v-model="loginForm.account" placeholder="输入用户名" clearable />
@@ -16,7 +19,10 @@
                             @keyup.enter.native="confirm" />
                     </el-form-item>
                     <el-form-item>
-                        <el-button type="primary" @click="confirm" :disabled="confirm_disabled"> 确 定 </el-button>
+                        <el-button type="primary" @click="confirm" :disabled="confirm_disabled" class="button">
+                            确 定
+                        </el-button>
+                        <el-link type="primary" :underline="false"> 没账号？注册用户</el-link>
                     </el-form-item>
                 </el-form>
             </div>
@@ -29,6 +35,7 @@ var loginForm = ref({
     account: "",
     password: "",
 });
+const loginImgUrl = ref("../../../public/loginImg.jpeg");
 const rules = {
     account: { required: true, message: "请输入账号", trigger: "blur" },
     password: { required: true, message: "请输入密码", trigger: "blur" },
@@ -78,7 +85,16 @@ import axios from "axios";
     height: 100%;
     background-color: #b3c0d1;
 }
-
+.Dimg {
+    overflow: hidden;
+    position: absolute;
+    width: 70%;
+    right: 30%;
+    height: 100%;
+}
+.img {
+    height: 100%;
+}
 .loginDiv {
     position: absolute;
     left: 70%;
@@ -88,15 +104,18 @@ import axios from "axios";
 }
 
 .login-title {
-    margin: 20px 0;
+    margin: 100px 0;
     text-align: center;
 }
 
 .login-content {
-    width: 400px;
+    width: 350px;
     height: 250px;
     position: absolute;
     top: 25px;
     left: 25px;
+}
+.button {
+    margin-right: 40px;
 }
 </style>
