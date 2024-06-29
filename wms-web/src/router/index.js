@@ -32,6 +32,11 @@ const routes = [
     path: '/',
     name: 'main',
     component: () => import('../components/common/404.vue'),  // 登录
+  },
+  {
+    path: '/frontend',
+    name: 'frontend',
+    component: () => import('../views/frontend/Login.vue'),  // 登录
   }
 ]
 

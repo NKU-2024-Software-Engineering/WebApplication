@@ -70,7 +70,7 @@ export default defineConfig({
         //配置多页面
         input: {
           index: path.resolve(__dirname,'index.html'),
-          frontend: path.resolve(__dirname,'frontend.html'),
+          // frontend: path.resolve(__dirname,'frontend.html'),
           //backend: path.resolve(__dirname,'backend.html')
         }
       }
