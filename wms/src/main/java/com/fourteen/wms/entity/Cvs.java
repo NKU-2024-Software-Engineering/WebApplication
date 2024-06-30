@@ -15,7 +15,7 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author akaziki
- * @since 2024-06-27
+ * @since 2024-06-30
  */
 @Getter
 @Setter
@@ -25,26 +25,34 @@ public class Cvs implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private String 姓名;
+    @ApiModelProperty("个人姓名")
+    private String name;
 
-    private String 手机号;
+    @ApiModelProperty("联系方式")
+    private String telephone;
 
-    private String 紧急联系人;
+    @ApiModelProperty("紧急联系人")
+    private String econtact;
 
-    private String 紧急联系人电话;
+    @ApiModelProperty("紧急联系人的联系方式")
+    private String ectelephone;
 
-    private String 意向岗位;
+    @ApiModelProperty("意向岗位")
+    private String iposition;
 
-    private String 自我评价;
+    @ApiModelProperty("自我评价")
+    private String sevaluation;
 
-    private String 技能特长;
+    @ApiModelProperty("技能特长")
+    private String skills;
 
-    private String 经历;
+    @ApiModelProperty("个人经历")
+    private String exp;
 
-    @TableId(value = "简历id", type = IdType.AUTO)
-    private Integer 简历id;
+    @ApiModelProperty("简历表的序列")
+    @TableId(value = "cid", type = IdType.AUTO)
+    private Integer cid;
 
-    private Integer 用户id;
-
-    private String 用户名;
+    @ApiModelProperty("对应的用户的id 用于在用户表查询")
+    private Integer uid;
 }

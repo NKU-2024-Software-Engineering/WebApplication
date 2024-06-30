@@ -20,24 +20,21 @@ import lombok.experimental.Accessors;
 @Getter
 @Setter
 @Accessors(chain = true)
-@ApiModel(value = "Hrs对象", description = "")
-public class Hrs implements Serializable {
+@ApiModel(value = "Companys对象", description = "")
+public class Companys implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty("对应的用户表中的ID")
-    private Integer uid;
-
-    @ApiModelProperty("HR表的序列")
-    @TableId(value = "HRid", type = IdType.AUTO)
-    private Integer hRid;
-
     @ApiModelProperty("公司名")
-    private String companyid;
+    private String cname;
 
-    @ApiModelProperty("HR的姓名")
-    private String name;
+    @ApiModelProperty("公司地址")
+    private String caddress;
 
-    @ApiModelProperty("HR的联系方式	")
-    private String telephone;
+    @ApiModelProperty("公司表的序列")
+    @TableId(value = "companyid", type = IdType.AUTO)
+    private Integer companyid;
+
+    @ApiModelProperty("公司的介绍")
+    private String cintroduction;
 }

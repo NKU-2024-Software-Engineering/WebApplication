@@ -65,7 +65,6 @@ public class UserController {
     public Result listP(@RequestBody User user) {
         LambdaQueryWrapper<User> lambdaQueryWrapper = new LambdaQueryWrapper<>();
         // like 模糊查询
-        lambdaQueryWrapper.like(User::getName, user.getName());
         // eq 完全匹配
         // lambdaQueryWrapper.eq(User::getName, user.getName());
 
@@ -73,24 +72,6 @@ public class UserController {
         return Result.suc(userService.list(lambdaQueryWrapper));
     }
 
-    @PostMapping("/listPage")
-    public List<User> listPage(@RequestBody QueryPageParam qParam) {
-        HashMap map = qParam.getParam();
-        System.out.println(qParam);
-        System.out.println(qParam.getParam().get("name"));
-
-        Page<User> page = new Page<>();
-        page.setCurrent(qParam.getPageNum());
-        page.setSize(qParam.getPageSize());
-
-        String name = (String)map.get("name");
-
-        LambdaQueryWrapper<User> lambdaQueryWrapper = new LambdaQueryWrapper<>();
-        // like 模糊查询
-        lambdaQueryWrapper.like(User::getName, name);
-        IPage<User> result = userService.page(page, lambdaQueryWrapper);
-        return result.getRecords();
-    }
 
     @PostMapping("/listPageC")
     public Result listPageC(@RequestBody QueryPageParam qParam) {
@@ -103,11 +84,7 @@ public class UserController {
         page.setSize(qParam.getPageSize());
 
         LambdaQueryWrapper<User> lambdaQueryWrapper = new LambdaQueryWrapper<>();
-        if(StringUtils.isNotBlank(name) && !"null".equals(name))
-        {
-            // like 模糊查询
-            lambdaQueryWrapper.like(User::getName, name);
-        }
+
         if(iLevel!=null)
         {
             int level = iLevel;

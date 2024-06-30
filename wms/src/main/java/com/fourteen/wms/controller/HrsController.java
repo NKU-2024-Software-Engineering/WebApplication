@@ -46,7 +46,7 @@ public class HrsController {
         if(StringUtils.isNotBlank(name) && !"null".equals(name))
         {
             // like 模糊查询
-            lambdaQueryWrapper.like(Hrs::get姓名, name);
+            lambdaQueryWrapper.like(Hrs::getName, name);
         }
         IPage<Hrs> result = hrsService.page(page, lambdaQueryWrapper);
 

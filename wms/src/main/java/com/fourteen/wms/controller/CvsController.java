@@ -48,7 +48,7 @@ public class CvsController {
         if(StringUtils.isNotBlank(name) && !"null".equals(name))
         {
             // like 模糊查询
-            lambdaQueryWrapper.like(Cvs::get用户id, name);
+            lambdaQueryWrapper.like(Cvs::getUid, name);
         }
         IPage<Cvs> result = cvsService.page(page, lambdaQueryWrapper);
 
@@ -70,6 +70,6 @@ public class CvsController {
 
     @PostMapping("/delete")
     public Result del(@RequestBody Cvs cvs) {
-        return cvsService.removeById(cvs.get简历id())?Result.suc():Result.fail();
+        return cvsService.removeById(cvs.getCid())?Result.suc():Result.fail();
     }
 }
