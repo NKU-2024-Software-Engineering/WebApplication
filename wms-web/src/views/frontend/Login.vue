@@ -22,7 +22,7 @@
                         <el-button type="primary" @click="confirm" :disabled="confirm_disabled" class="button">
                             确 定
                         </el-button>
-                        <el-link type="primary" :underline="false"> 没账号？注册用户</el-link>
+                        <el-link type="primary" :underline="false" @click="reg"> 没账号？注册用户</el-link>
                     </el-form-item>
                 </el-form>
             </div>
@@ -60,7 +60,7 @@ const confirm = async () => {
             if (data.code == 200) {
                 sessionStorage.setItem("CurUser", JSON.stringify(data.data));
                 const router = proxy.$router;
-                router.replace("/backend/manage");
+                router.replace("/main");
             } else {
                 confirm_disabled = false;
                 alert("校验失败，用户名或密码错误");
@@ -72,6 +72,11 @@ const confirm = async () => {
             return false;
         }
     });
+};
+const reg = () => {
+    console.log("reg");
+    const router = proxy.$router;
+    router.replace("/reg");
 };
 </script>
 <script>

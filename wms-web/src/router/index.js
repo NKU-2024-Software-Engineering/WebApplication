@@ -30,13 +30,23 @@ const routes = [
   },
   {
     path: '/',
-    name: 'main',
+    name: '404',
     component: () => import('../components/common/404.vue'),  // 登录
   },
   {
     path: '/frontend',
     name: 'frontend',
-    component: () => import('../views/frontend/Login.vue'),  // 登录
+    component: () => import('../views/frontend/Login.vue'),  // 前台登录
+  },
+  {
+    path: '/main',
+    name: 'main',
+    component: () => import('../views/frontend/Index.vue'),  // 登录
+  },
+  {
+    path: '/reg',
+    name: 'reg',
+    component: () => import('../views/frontend/Reg.vue'),  // 登录
   }
 ]
 
