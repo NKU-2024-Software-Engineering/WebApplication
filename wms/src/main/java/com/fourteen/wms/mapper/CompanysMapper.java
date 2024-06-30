@@ -2,6 +2,7 @@ package com.fourteen.wms.mapper;
 
 import com.fourteen.wms.entity.Companys;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
  * <p>
@@ -11,6 +12,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author akaziki
  * @since 2024-06-30
  */
+@Mapper
 public interface CompanysMapper extends BaseMapper<Companys> {
 
 }

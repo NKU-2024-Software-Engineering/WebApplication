@@ -104,4 +104,24 @@ public class UserController {
                 .list();
         return list.size()>0 ? Result.suc(list.get(0)) :Result.fail();
     }
+
+    /**
+     * 注册功能
+     * @param user 要求输入的user的信息
+     * @return 如果账号不同则进行插入，插入成功则注册成功。否则注册失败。若存在相同账户，同样注册失败
+     */
+    @PostMapping("/register")
+    public Result register(@RequestBody User user){
+
+        List list = userService.lambdaQuery().eq(User::getAccount,user.getAccount())
+                .list();
+        if(list.size() == 0)
+        {
+            return Result.fail();
+        }
+        else
+        {
+            return userService.save(user)?Result.suc():Result.fail();
+        }
+    }
 }

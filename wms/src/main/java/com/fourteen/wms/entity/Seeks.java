@@ -24,7 +24,7 @@ public class Seeks implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @ApiModelProperty("投递简历的求职者id")
-    private String jseeker;
+    private Integer jseeker;
 
     @ApiModelProperty("投递的工作岗位id")
     private Integer jid;

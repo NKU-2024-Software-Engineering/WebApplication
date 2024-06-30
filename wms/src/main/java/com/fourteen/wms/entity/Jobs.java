@@ -25,6 +25,9 @@ public class Jobs implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    @ApiModelProperty("岗位要求")
+    private String requirement;
+
     private String job;
 
     private String company;
